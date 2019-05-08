@@ -1,7 +1,7 @@
 # Kannada-TTS-install-script
 
-Author : T Shrinivasan <tshrinivasan@gmail.com>
-git clone https://github.com/tshrinivasan/tamil-tts-install.git
+Author : T Shrinivasan <email>tshrinivasan@gmail.com</email> <br>
+git clone https://github.com/tshrinivasan/tamil-tts-install.git 
 
 This is a modified script of above authors code for Kannada
 
