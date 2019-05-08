@@ -75,8 +75,8 @@ kannada_tts_setup() {
     cd "${DOWNLOAD_PATH}"
     if [[ ! -d ssn_hts_demo ]]; then
 #	wget --no-check-certificate http://127.0.0.1/ssn_hts_demo_tamil_male.tgz
-	wget --no-check-certificate https://www.iitm.ac.in/donlab/tts/downloads/voices/hts23/ssn_hts_demo_tamil_male.tgz
-	tar xvzf ssn_hts_demo_tamil_male.tgz
+	wget --no-check-certificate https://www.iitm.ac.in/donlab/tts/downloads/voices/hts23/ssn_hts_demo_Tamil_male.tgz
+	tar xvzf ssn_hts_demo_Tamil_male.tgz
     fi
 
 
