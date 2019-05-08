@@ -24,6 +24,12 @@ cd kannada-tts-install
 
 ```
 
+##For other languages 
+```
+Modify htsvoice url in installation script and experiment with it,
+you might be having trouble in configuring, explore www.iitm.ac.in/donlab/tts
+
+
 ## How to convert kannada text to .wav
 
 For  now, once installed go to build/packages/HTS-demo-ARCTIC-SLT or a similar named directory and
