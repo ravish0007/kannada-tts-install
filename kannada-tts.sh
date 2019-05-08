@@ -142,7 +142,7 @@ kannada_tts_setup() {
     if [[ ! -f dumpfeats.sh ]]; then
 	sudo gunzip dumpfeats.sh.gz
     fi
-    sudo chmod a+rx "${DOWNLOAD_PATH}"/festival/examples/dumpfeats
+    sudo chmod a+rx "${DOWNLOAD_PATH}"/festival/examples/dumpfeats*
 
 
 
@@ -170,7 +170,8 @@ kannada_tts_setup() {
     fi
 
     sudo cp "${DOWNLOAD_PATH}"/festival/examples/text2utt.sh /usr/bin/text2utt 
-    sudo cp  "${DOWNLOAD_PATH}"/festival/examples/dumpfeats.sh /usr/bin/dumpfeats 
+    sudo cp  "${DOWNLOAD_PATH}"/festival/examples/dumpfeats.sh /bin/dumpfeats
+   sudo  chmod a+x /bin/dumpfeats
 
         ./configure --with-fest-search-path="${DOWNLOAD_PATH}"/festival/examples  \
                     --with-sptk-search-path="${COMPILE_PATH}"/sptk/bin \
