@@ -46,8 +46,8 @@ kannada_tts_setup() {
 
     cd "${DOWNLOAD_PATH}"
     if [[ ! -d HTS-demo_CMU-ARCTIC-SLT ]]; then
- #       wget --no-check-certificate  http://hts.sp.nitech.ac.jp/archives/2.3/HTS-demo_CMU-ARCTIC-SLT.tar.bz2  
-        wget --no-check-certificate  http://127.0.0.1:80/HTS-demo_CMU-ARCTIC-SLT.tar.bz2  
+        wget --no-check-certificate  http://hts.sp.nitech.ac.jp/archives/2.3/HTS-demo_CMU-ARCTIC-SLT.tar.bz2  
+#        wget --no-check-certificate  http://127.0.0.1:80/HTS-demo_CMU-ARCTIC-SLT.tar.bz2  
         tar xvBf HTS-demo_CMU-ARCTIC-SLT.tar.bz2
 	cd HTS-demo_CMU-ARCTIC-SLT
 	sed -i  s/default=cmu_us_arctic/default=iitm_unified/ configure
