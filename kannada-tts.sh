@@ -28,10 +28,11 @@ kannada_tts_setup() {
         unzip unified.zip
         cd unified
         make
-	sudo rm /usr/local/bin/unified-parser
-        sudo ln -s  "${DOWNLOAD_PATH}"/unified/unified-parser /usr/local/bin/unified-parser
-    fi 
+        sudo ln  -s  "${DOWNLOAD_PATH}"/unified/unified-parser /usr/local/bin/unified-parser
 
+    
+   fi 
+   
    cd  "${DOWNLOAD_PATH}"
       if [[ ! -d festival ]]; then
 	git clone http://github.com/festvox/festival
@@ -43,7 +44,7 @@ kannada_tts_setup() {
 	cd ..
        fi
 	
-
+     
 
     cd "${DOWNLOAD_PATH}"
     if [[ ! -d HTS-demo_CMU-ARCTIC-SLT ]]; then
@@ -52,12 +53,15 @@ kannada_tts_setup() {
         tar xvBf HTS-demo_CMU-ARCTIC-SLT.tar.bz2
 	cd HTS-demo_CMU-ARCTIC-SLT
 	sed -i  s/default=cmu_us_arctic/default=iitm_unified/ ./configure
-        sed -i  s/default=slt/default=don/ configure
+        sed -i  s/default=slt/default=don/ ./configure
 	sed -i s/DATASET=cmu_us_arctic/DATASET=iitm_unified/ ./configure
 	sed -i s/SPEAKER=slt/SPEAKER=don/ configure
 	sed -i s/\ \&/\ / ./Makefile.in 
+	sed -i  s/\>\ log\ 2\>\&1/\ / ./Makefile.in 
+	sudo cp  "${DOWNLOAD_PATH}"/unified/common   "${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT 
 
     fi
+
 
     cd "${DOWNLOAD_PATH}"
     if [[ ! -f iitm_unified_don.htsvoice ]]; then
@@ -74,6 +78,7 @@ kannada_tts_setup() {
 	wget --no-check-certificate https://www.iitm.ac.in/donlab/tts/downloads/voices/hts23/ssn_hts_demo_tamil_male.tgz
 	tar xvzf ssn_hts_demo_tamil_male.tgz
     fi
+
 
     cd "${DOWNLOAD_PATH}"
     if [[ ! -d SPTK-3.10 ]]; then
