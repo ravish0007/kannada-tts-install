@@ -187,7 +187,7 @@ kannada_tts_setup() {
         sed -i s/\$ENGIN\ =\ 0\;/\$ENGIN\ =\ 1\;/ scripts/Config.pm
 
 
-  	 local file=scripts/Training.pl" line="# POSSIBILITY OF SUCH DAMAGE.                                       #" 
+  	local file="scripts/Training.pl" line="# POSSIBILITY OF SUCH DAMAGE.                                       #" 
    	local newText="use lib '.', 'scripts'\;"
    	sed -i -e "/^$line$/a"$'\\\n'"$newText"$'\n' "$file"
 
