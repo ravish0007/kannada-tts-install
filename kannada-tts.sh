@@ -16,7 +16,7 @@ kannada_tts_setup() {
     HTKUSER=ravish
     HTKPASSWORD=rwd69H+g
 
-    sudo apt-get install -y wget valgrind  bison git festival  libx11-dev perl build-essential g++ csh gawk bc sox tcsh default-jre lame
+    sudo apt-get install -y wget valgrind  bison git festival  libx11-dev perl build-essential g++ csh gawk bc sox tcsh default-jre lame flex
 
     mkdir -p "${DOWNLOAD_PATH}"
     mkdir -p "${COMPILE_PATH}"
@@ -28,10 +28,10 @@ kannada_tts_setup() {
         unzip unified.zip
         cd unified
         make
+	sudo rm /usr/local/bin/unified-parser
         sudo ln -s  "${DOWNLOAD_PATH}"/unified/unified-parser /usr/local/bin/unified-parser
     fi 
 
-    
    cd  "${DOWNLOAD_PATH}"
       if [[ ! -d festival ]]; then
 	git clone http://github.com/festvox/festival
