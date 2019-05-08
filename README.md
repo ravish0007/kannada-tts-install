@@ -25,6 +25,13 @@ cd kannada-tts-install
 ```
 
 ## How to convert kannada text to .wav
+
+For  now, once installed go to build/packages/HTS-demo-ARCTIC-SLT or a similar named directory and
+sh hts_synthesis.sh "kannada string" outputfile
+
+find the outputfile.wav file in gen/gen/qst001/ver1/outputfile.wav in HTS-demo-ARCTIC-SLT directory
+
+
 ```
 cd kannada-tts-install
 ./kannada-tts.sh --run --source kannada-text.txt
@@ -41,3 +48,5 @@ This will generate 'kannada-text.mp3' file
 ## howto set your own HTKUSER and HTKPASSWORD in kannada-tts.sh
 Register here http://htk.eng.cam.ac.uk/download.shtml and get a username and password, replace your
 own username and passward in HTKUSER and HTKPASSWORD
+
+
