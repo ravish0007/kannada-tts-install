@@ -4,7 +4,8 @@ ROOT="${ROOT:-$(pwd)}"
 BUILD="${ROOT}/build"
 DOWNLOAD_PATH="${BUILD}"/packages
 COMPILE_PATH="${BUILD}"/compiled
-RUNDIR="${DOWNLOAD_PATH}"/ssn_hts_demo
+RUNDIR="${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT
+
 
 
 
@@ -50,11 +51,11 @@ kannada_tts_setup() {
 #        wget --no-check-certificate  http://127.0.0.1:80/HTS-demo_CMU-ARCTIC-SLT.tar.bz2  
         tar xvBf HTS-demo_CMU-ARCTIC-SLT.tar.bz2
 	cd HTS-demo_CMU-ARCTIC-SLT
-	sed -i  s/default=cmu_us_arctic/default=iitm_unified/ configure
+	sed -i  s/default=cmu_us_arctic/default=iitm_unified/ ./configure
         sed -i  s/default=slt/default=don/ configure
-	sed -i s/DATASET=cmu_us_arctic/DATASET=iitm_unified/ configure
+	sed -i s/DATASET=cmu_us_arctic/DATASET=iitm_unified/ ./configure
 	sed -i s/SPEAKER=slt/SPEAKER=don/ configure
-	sed -i s/\ \&/\ / Makefile.in 
+	sed -i s/\ \&/\ / ./Makefile.in 
 
     fi
 
@@ -71,7 +72,7 @@ kannada_tts_setup() {
     if [[ ! -d ssn_hts_demo ]]; then
 #	wget --no-check-certificate http://127.0.0.1/ssn_hts_demo_tamil_male.tgz
 	wget --no-check-certificate https://www.iitm.ac.in/donlab/tts/downloads/voices/hts23/ssn_hts_demo_tamil_male.tgz
-	tar xvzf ssn_hts_demo_kannada_male.tgz
+	tar xvzf ssn_hts_demo_tamil_male.tgz
     fi
 
     cd "${DOWNLOAD_PATH}"
@@ -141,7 +142,7 @@ kannada_tts_setup() {
 
 
     cd "${DOWNLOAD_PATH}"
-    if [[ ! -f dumpfeats.sh ]]; then
+    if [[ ! -d supporting_scripts ]]; then
      wget --no-check-certificate https://www.iitm.ac.in/donlab/tts/downloads/synthesisDocs/supporting_scripts.zip 
 #    wget --no-check-certificate http://127.0.0.1/supporting_scripts.zip 
     unzip supporting_scripts.zip
@@ -163,8 +164,8 @@ kannada_tts_setup() {
         sudo cp "${DOWNLOAD_PATH}"/ssn_hts_demo/Slurp.pm /usr/share/perl5/File/
     fi
 
-    #sudo cp "${DOWNLOAD_PATH}"/festival/examples/text2utt.sh /bin/text2utt 
-    #sudo cp /usr/share/doc/festival/examples/dumpfeats /bin/dumpfeats 
+    sudo cp "${DOWNLOAD_PATH}"/festival/examples/text2utt.sh /usr/bin/text2utt 
+    sudo cp  "${DOWNLOAD_PATH}"/festival/examples/dumpfeats.sh /usr/bin/dumpfeats 
 
         ./configure --with-fest-search-path="${DOWNLOAD_PATH}"/festival/examples  \
                     --with-sptk-search-path="${COMPILE_PATH}"/sptk/bin \
@@ -174,13 +175,13 @@ kannada_tts_setup() {
         mkdir -p "${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT/gen/qst001/ver1/hts_engine
 
 
-        cp  "${DOWNLOAD_PATH}"/iitm_unified_don.htsvoice  voices/qst001/ver1/
+        cp  "${DOWNLOAD_PATH}"/iitm_unified_don.htsvoice  "${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT/voices/qst001/ver1/
 
-        sed -i s/=\ 1\;/\=\ 0\;/ "${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT/scripts/Config.pm
-        sed -i s/\$ENGIN\ =\ 0\;/\$ENGIN\ =\ 1\;/ "${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT/scripts/Config.pm
+        sed -i s/=\ 1\;/\=\ 0\;/ scripts/Config.pm
+        sed -i s/\$ENGIN\ =\ 0\;/\$ENGIN\ =\ 1\;/ scripts/Config.pm
 
 
-  	 local file=""${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT/scripts/Training.pl" line="# POSSIBILITY OF SUCH DAMAGE.                                       #" 
+  	 local file=scripts/Training.pl" line="# POSSIBILITY OF SUCH DAMAGE.                                       #" 
    	local newText="use lib '.', 'scripts'\;"
    	sed -i -e "/^$line$/a"$'\\\n'"$newText"$'\n' "$file"
 
