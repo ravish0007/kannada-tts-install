@@ -29,8 +29,8 @@ kannada_tts_setup() {
         cd unified
         make
         sudo ln  -s  "${DOWNLOAD_PATH}"/unified/unified-parser /usr/local/bin/unified-parser
+        sudo cp  "${DOWNLOAD_PATH}"/unified/unified-parser /usr/local/bin/unified-parser
 
-    
    fi 
    
    cd  "${DOWNLOAD_PATH}"
@@ -58,6 +58,7 @@ kannada_tts_setup() {
 	sed -i s/SPEAKER=slt/SPEAKER=don/ configure
 	sed -i s/\ \&/\ / ./Makefile.in 
 	sed -i  s/\>\ log\ 2\>\&1/\ / ./Makefile.in 
+	sed -i s/'(Training.pl) in background....'/' '/ Makefile.in
 	sudo cp  "${DOWNLOAD_PATH}"/unified/common   "${DOWNLOAD_PATH}"/HTS-demo_CMU-ARCTIC-SLT 
 
     fi
